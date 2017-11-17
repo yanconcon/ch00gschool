@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="shortcut icon" href="/static/img/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="/static/img/apple_icons_57x57.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/static/img/apple_icons_72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/static/img/apple_icons_114x114.png">
+<title>{% block title %}Groutek | Premium Html Template{% endblock %}</title>
+<link href="http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,100,400italic,700,500,900" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="/static/css/bootstrap.min.css" type="text/css" media="all" />
+<link rel="stylesheet" href="/static/css/theme.css" type="text/css" media="all" />
+<link rel="stylesheet" href="/static/css/custom.css" type="text/css" media="all" />
+</head>
+<body>
+    {% include 'y_main_header.html' %}
+
+    {% include 'y_news1.html' %}
+
+    {% include 'y_footer.html' %}
+    
+    <div class="fixed-menu"></div>
+    
+    <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/static/js/modules.js"></script>
+	<script type="text/javascript" src="/static/js/theme.js"></script>
+    <script type="text/javascript" src="/static/js/color_panel.js"></script>
+	
+    <!-- Portfolio -->
+    <script type="text/javascript" src="/static/js/jquery.isotope.min.js"></script>
+    <script type="text/javascript" src="/static/js/sorting.js"></script>
+    <script>	
+		items_set = [                    
+			{src : '/static/img/portfolio/570_379/5.jpg', zoom : '/static/img/portfolio/570_379/5.jpg', url : 'portfolio_post_fullwidth.html', sortcategory: 'branding textstyle', title: 'Praesent mi magna', itemdate: 'Dec 03, 2020', itemcategory: 'Category: <a href="javascript:void(0);">typography</a>', itemauthor: 'Client: <a href="javascript:void(0);">gt3dev</a>', itemtime: 'Time spent: <a href="javascript:void(0);">2 days</a>', itemdescr: 'Sed ullamcorper dignissim consectetur ut tincidunt eros sed sapien consectetur dictum. Ultrices posuere cubilia curae curabitur sit amet tortor ut massa commodo. Vestibulum consectetur euismod malesuada tincidunt cum. Pellentesques sed volutpat ante, cursus port. Praesent mi magna, penatibus et magniseget dis parturient montes, nascetur ridiculus mus, commodo id eros dapibus, vestibulum luctus, tortor. Morbi eget turpis justo vestibulum est elit, congue nec metus rutrum nullam, ut consectetur ipsum aliquam semper fringilla fermentum. Ut ullamcorper nibh a mauris luctus, sit amet pulvinar ligula venenatis nunc ac suscipit, sapien nec gravida vehicula, mauris lectus a nec. Lobortis nibh, at mattis turpis lectus nec ligula. Maecenas varius dignissim ultrices. Sed dignissim, ac bibendum varius. Vestibulum ante ipsum primis in faucibus orci luctus nunc ac suscipit, sapien nec gravida vehicula, mauris lectus a nec. Lobortis nibh, at mattis turpis lectus nec ligula.'},
+			{src : '/static/img/portfolio/570_379/6.jpg', zoom : '/static/img/portfolio/570_379/6.jpg', url : 'portfolio_post_fullwidth.html', sortcategory: 'polygraphy webui', title: 'Ut enim ad minima', itemdate: 'Dec 02, 2020', itemcategory: 'Category: <a href="javascript:void(0);">typography</a>', itemauthor: 'Client: <a href="javascript:void(0);">gt3dev</a>', itemtime: 'Time spent: <a href="javascript:void(0);">2 days</a>', itemdescr: 'Praesent mi magna, penatibus et magniseget dis parturient montes, nascetur ridiculus mus, commodo id eros dapibus, vestibulum luctus, tortor. Ultrices posuere cubilia curae curabitur sit amet tortor ut massa commodo. Vestibulum consectetur euismod malesuada tincidunt cum. Sed ullamcorper dignissim consectetur ut tincidunt eros sed sapien consectetur dictum. Pellentesques sed volutpat ante, cursus port. Morbi eget turpis justo vestibulum est elit, congue nec metus rutrum nullam, ut consectetur ipsum aliquam semper fringilla fermentum. Ut ullamcorper nibh a mauris luctus, sit amet pulvinar ligula venenatis nunc ac suscipit, sapien nec gravida vehicula, mauris lectus a nec. Lobortis nibh, at mattis turpis lectus nec ligula. Maecenas varius dignissim ultrices. Sed dignissim, ac bibendum varius. Vestibulum ante ipsum primis in faucibus orci luctus nunc ac suscipit, sapien nec gravida vehicula, mauris lectus a nec. Lobortis nibh, at mattis turpis lectus nec ligula.'}
+		];
+		jQuery('#list').portfolio_addon({
+			type : 1, // 1 column portfolio
+			load_count : 2,
+			items : items_set
+		});
+	</script> 
+</body>
+</html>

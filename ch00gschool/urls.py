@@ -19,5 +19,12 @@ from staticWeb import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^test/$',views.test)
+    url(r'^test/$',views.test),
+    url(r'^news/$',views.news),
+    url(r'^foreign_plan/$',views.plan),
+    url(r'^improvment/$',views.peixun),
+    url(r'^enterprise/$',views.enterprise),
+    url(r'^recruitment/$',views.recruitment),
+    url(r'^home/$',views.home),
+
 ]

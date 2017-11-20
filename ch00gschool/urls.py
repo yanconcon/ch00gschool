@@ -15,6 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.conf.urls.static import static
+from django.conf import settings
+
+from ch00gschool import settings
 from staticWeb import views
 
 urlpatterns = [
@@ -27,5 +31,8 @@ urlpatterns = [
     url(r'^recruitment/$',views.recruitment),
     url(r'^home/$',views.home),
     url(r'^signup/',views.S_signup),
+    url(r'^signup/',views.signup),
+    url(r'^upload', views.uploadImg),
+    url(r'^show', views.showImg),
 
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

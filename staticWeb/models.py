@@ -90,6 +90,19 @@ class Enterprise(MyUser):
         return self.username
 
 
+class News(models.Model):
+    img = models.ImageField(upload_to='newImg')
+    title = models.CharField(max_length=20)
+    created_date = models.DateField("创建日期", auto_now_add=True)
+    content = models.TextField()
+    is_show = models.BooleanField()
+
+    class Meta:
+        db_table = 'News'
+    def __str__(self):
+        return self.title
+
+
 # 写模型的方法：
 # 下层对象写上层对象名字
 # 上层对象包含下层对象

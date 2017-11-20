@@ -17,7 +17,7 @@ class CandidatesAdmin(admin.ModelAdmin):
 
 
 class StudentAdmin(admin.ModelAdmin):
-    list_display = ('username','stu_class','tele')
+    list_display = ('username','stu_class','tele_num')
     search_fields = ('username','student_id')
     list_filter = ('date_joined',)
     ordering = ('-date_joined',)
@@ -29,8 +29,8 @@ class PeixunbanAdmin(admin.ModelAdmin):
     filter_horizontal = ('students','candidates')
 
 class EnterpriseAdmin(admin.ModelAdmin):
-    list_display = ('username','tele','date_joined')
-    search_fields = ('username','tele')
+    list_display = ('username','tele_num','date_joined')
+    search_fields = ('username','tele_num')
     list_filter = ('date_joined',)
     ordering = ('-date_joined',)
     filter_horizontal = ('peixunban',)

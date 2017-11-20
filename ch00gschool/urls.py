@@ -26,6 +26,6 @@ urlpatterns = [
     url(r'^enterprise/$',views.enterprise),
     url(r'^recruitment/$',views.recruitment),
     url(r'^home/$',views.home),
-    url(r'^signup/',views.signup),
+    url(r'^signup/',views.S_signup),
 
 ]

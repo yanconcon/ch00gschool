@@ -90,6 +90,8 @@ class Enterprise(MyUser):
         return self.username
 
 
-
+# 写模型的方法：
+# 下层对象写上层对象名字
+# 上层对象包含下层对象
 
 

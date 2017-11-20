@@ -36,7 +36,7 @@ class Candidates(models.Model):
 # 基类
 class MyUser(AbstractUser):
 
-	tele_num = models.IntegerField('联系电话', blank = True, default= 0)
+	tele_num = models.IntegerField('联系电话')
 
 	class Meta:
 		db_table='MyUser'

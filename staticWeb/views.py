@@ -39,10 +39,8 @@ def signup(request):
 			user.save()
 			auth_user = authenticate(username=username,password=password)
 			auth_login(request,auth_user)
-			return redirect("home")
+			return redirect("test")
 	else:
 		form=SignupForm(auto_id="%s")
 	return render(request,'x_signup.html',locals())
-
-
 

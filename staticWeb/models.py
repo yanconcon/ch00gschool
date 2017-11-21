@@ -1,5 +1,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from imagekit.models import ProcessedImageField as ProcessedImg
+from imagekit.processors import ResizeToFill
 
 
 # 成绩单
@@ -19,11 +21,16 @@ class Transcripts(models.Model):
         return self.subject
 # 应聘信息
 class Candidates(models.Model):
+    img = ProcessedImg(upload_to='candidateImg', default='newsImg/zhbit.png', processors=[ResizeToFill(370, 300)])
     title = models.CharField("标题", max_length=50)
     pxban_name = models.CharField("培训班名字",max_length=50)
     enterprise_name = models.CharField("企业名字", max_length=50)
     created_date = models.DateField("创建日期", auto_now_add=True)
     modify_date = models.DateField("修改日期", auto_now=True)
+
+    #标签属性有  branding   polygraphy     textstyle      webui 4种
+    sign = models.CharField('招聘标签', default='branding', max_length=30)
+
     content = models.TextField()
     is_show = models.BooleanField()
 
@@ -91,10 +98,10 @@ class Enterprise(MyUser):
 
 
 class News(models.Model):
-    img = models.ImageField(upload_to='newImg')
+    img = ProcessedImg(upload_to='newsImg',default = 'newsImg/zhbit.png',processors=[ResizeToFill(370,180)])
     title = models.CharField(max_length=20)
     created_date = models.DateField("创建日期", auto_now_add=True)
-    content = models.TextField()
+    content = models.TextField(default='null')
     is_show = models.BooleanField()
 
     class Meta:

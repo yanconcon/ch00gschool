@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Transcripts,Candidates,MyUser,Student,Peixunban,Enterprise
+from .models import Transcripts,Candidates,MyUser,Student,Peixunban,Enterprise,News
 
 # Register your models here.
 class TranscriptsAdmin(admin.ModelAdmin):
@@ -7,12 +7,12 @@ class TranscriptsAdmin(admin.ModelAdmin):
     search_fields = ('stu_name','subject',)
     fields = ('stu_name','stu_clas''subject')
 
-class CandidatesAdmin(admin.ModelAdmin):
-    list_display = ('title','pxban_name','enterprise_name','created_date')
-    search_fields = ('titlee', 'enterprise_name')
-    list_filter = ('created_date',)
-    ordering = ('-created_date',)
-    fields = ('title', 'pxban_name''enterprise_name','content','created_date','modify_date','is_show')
+# class CandidatesAdmin(admin.ModelAdmin):
+#     list_display = ('title','pxban_name','enterprise_name','created_date')
+#     search_fields = ('titlee', 'enterprise_name')
+#     list_filter = ('created_date',)
+#     ordering = ('-created_date',)
+#     fields = ('title', 'pxban_name''enterprise_name','content','created_date','modify_date','is_show')
 
 
 
@@ -36,7 +36,8 @@ class EnterpriseAdmin(admin.ModelAdmin):
     filter_horizontal = ('peixunban',)
 
 admin.site.register(Transcripts,TranscriptsAdmin)
-admin.site.register(Candidates,CandidatesAdmin)
+admin.site.register(Candidates)
 admin.site.register(Student,StudentAdmin)
 admin.site.register(Peixunban,PeixunbanAdmin)
 admin.site.register(Enterprise,EnterpriseAdmin)
+admin.site.register(News)

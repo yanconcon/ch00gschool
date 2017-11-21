@@ -1,0 +1,25 @@
+<div class="sorting_block image-grid featured_items photo_gallery" id="list">
+
+    {% for foo in candicates %}
+        <div class="col-sm-4 {{ foo.sign }} element">
+        <div class="item animate" data-anim-type="bounceIn" data-anim-delay="250">
+            <div class="item_wrapper">
+                <div class="img_block wrapped_img">
+                    <img src="{{ foo.img.url }}" alt="">
+                    <span class="block_fade"></span>
+                    <div class="post_hover_info">
+                        <div class="featured_items_title">
+                            <h5>{{ foo.title }}</h5>
+                        </div>
+                        <div class="featured_meta">{{ foo.enterprise_name }}</div>
+                        <a href="/static/img/portfolio/370_300/9.jpg" class="photozoom featured_ico_link view_link"><i class="icon-expand"></i></a>
+                        <a class="featured_ico_link view_link" href="portfolio_post_fullwidth.html"><i class="icon-link"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+
+</div>

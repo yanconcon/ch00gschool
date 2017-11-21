@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col-sm-12 module_cont pb80">
+        <div class="section-clients featured_items">
+            <div class="items3">
+                <ul class="client-list item_list">
+
+                       {% for foo in news %}
+                        <li class="animate" data-anim-type="fadeInLeft" data-anim-delay="250">
+                        <i>
+                            <img class="icon-cl-sweden" src="{{ foo.img.url }}" alt="">
+                        </i>
+                        <blockquote>
+                            <p class="quote">{{ foo.content }}  </p>
+                            <div class="author">
+                                <p>
+                                    <span class="img"><img src="{{ foo.img.url }}" alt=""></span>
+                                    <span class="cont">
+                                        <b>{{ foo.title  }} </b>
+                                        <span class="title">{{ foo.created_date }}  </span>
+                                    </span>
+                                </p>
+                            </div>
+                        </blockquote>
+                    </li>
+                    {% endfor %}
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

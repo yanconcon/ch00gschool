@@ -1,9 +1,10 @@
+from PIL import Image
 from django.shortcuts import render,redirect
 from staticWeb.forms import SignupForm
 from django.contrib.auth import get_user_model
 from django.contrib.auth import authenticate,login as auth_login ,logout
 
-from staticWeb.models import News
+from staticWeb.models import News,Candidates
 
 # Create your views here.
 from staticWeb.models import Student
@@ -13,7 +14,9 @@ def test(request):
     return render(request, 'y_plan.html')
 
 def home(request):
-    return render(request, 'home_base.html')
+    news = News.objects.all()
+    candicates = Candidates.objects.all()
+    return render(request, 'home_base.html',locals())
 
 def news(request):
     return render(request, 'y_news.html')
@@ -49,13 +52,13 @@ def stu_signup(request):
 
 def uploadImg(request):
     if request.method == 'POST':
-        new_img = News(
+        new = News(
 			content="aaaa",
             img=request.FILES.get('img'),
             title = request.FILES.get('img').name,
 			is_show=True,
         )
-        new_img.save()
+        new.save()
     return render(request, 'upload.html')
 
 def showImg(request):

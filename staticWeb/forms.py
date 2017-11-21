@@ -77,3 +77,32 @@ class SignupForm(forms.ModelForm):
         except UserModel.DoesNotExist:
             return username
         raise forms.ValidationError("有人已经注册了这个用户名")
+
+
+class LoginForm(forms.Form):
+    username = forms.CharField(
+        label='用户名', required=False)
+    password = forms.CharField(
+        label='密码', required=False, widget=forms.PasswordInput())
+
+    def clean(self):
+        cleaned_data = super(LoginForm, self).clean()
+        UserModel = get_user_model()
+        username = cleaned_data.get("username")
+        username = username.strip()
+        password = cleaned_data.get("password")
+        user = authenticate(username=username, password=password)
+
+        if user is not None:
+            if user.is_active:
+                return cleaned_data
+            else:
+                raise forms.ValidationError("该账号被禁止登录")
+
+        if not username or not password:
+            raise forms.ValidationError("用户名/密码不能为空")
+
+        else:
+            raise forms.ValidationError("密码和用户名不匹配")
+
+

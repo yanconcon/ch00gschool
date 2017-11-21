@@ -36,12 +36,16 @@ class Candidates(models.Model):
 # 基类
 class MyUser(AbstractUser):
 
-	tele_num = models.IntegerField('联系电话', default=122)
+    role = models.CharField(max_length=50)
+    tele_num = models.IntegerField('联系电话', default=122)
 
-	class Meta:
-		db_table='MyUser'
-	def __str__(self):
-		return self.username
+
+
+
+    class Meta:
+        db_table='MyUser'
+    def __str__(self):
+        return self.username
 # 学生
 class Student(MyUser):
 

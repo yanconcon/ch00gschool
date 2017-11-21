@@ -3,7 +3,7 @@ from staticWeb.forms import SignupForm,LoginForm
 from django.contrib.auth import get_user_model
 from django.contrib.auth import authenticate,login as auth_login ,logout
 
-from staticWeb.models import News, Enterprise
+from staticWeb.models import News, Enterprise,Candidates
 
 # Create your views here.
 from staticWeb.models import Student

@@ -30,8 +30,12 @@ urlpatterns = [
     url(r'^enterprise/$',views.enterprise),
     url(r'^recruitment/$',views.recruitment),
     url(r'^home/$',views.home),
-    url(r'^signup/',views.stu_signup),
+    url(r'^studentsignup/',views.stu_signup),
+    url(r'^enterprisesignup/',views.ent_signup),
+    url(r'^studentlogin/',views.stu_login),
+    url(r'^enterpriselogin/', views.ent_login),
     url(r'^upload', views.uploadImg),
     url(r'^show', views.showImg),
+    url(r'^logout/', views.logout1, name= 'logout'),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

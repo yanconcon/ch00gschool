@@ -1,0 +1,62 @@
+<h2>企业登录</h2>
+			</div>
+
+					<div class="about-section">
+
+						<div class="about-grids">
+						<div >
+               <form class="form-horizontal" id = "form" action="{{path}}" method="post">
+                {% csrf_token %}
+
+
+                  <div class="form-group {%if form.username.errors%} has-error {%endif%}">
+                    <label for="username" class="col-sm-4 control-label">用户名* :</label>
+                    <div class="col-sm-5">
+                    {{form.username}}
+                    </div>
+                    {%if form.username.errors%}
+                  <div class="col-sm-5 col-sm-offset-4 margint10">
+                  <span class="color-background2 ">
+                  {% for error in form.username.errors %}
+                    {{ error|escape }}
+                  {% endfor %}
+                  </span>
+                  </div>
+                  {%endif%}
+                </div>
+
+                <div class="form-group {%if form.password.errors%} has-error {%endif%}">
+                  <label for="password" class="col-sm-4 control-label">密码*:</label>
+                  <div class="col-sm-5">
+                    {{form.password}}
+                  </div>
+                  {%if form.password.errors%}
+                  <div class="col-sm-5 col-sm-offset-4 margint10">
+                  <span class="color-background2 ">
+                  {% for error in form.password.errors %}
+                    {{ error|escape }}
+                  {% endfor %}
+                  </span>
+                  </div>
+                  {%endif%}
+                </div>
+
+
+                <div class="form-group margint30">
+                  <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">确认</button>
+                  </div>
+                </div>
+
+
+
+
+
+
+
+               </form>
+           </div>
+
+
+					</div>
+					</div>

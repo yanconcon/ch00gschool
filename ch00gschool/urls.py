@@ -37,5 +37,6 @@ urlpatterns = [
     url(r'^upload', views.uploadImg),
     url(r'^show', views.showImg),
     url(r'^logout/', views.logout1, name= 'logout'),
+    url(r'^userland/', views.user_land,name='userland'),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

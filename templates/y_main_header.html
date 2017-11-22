@@ -1,12 +1,9 @@
 	<div class="main_header type1">
         <div class="tagline">
             <div class="container">
-
-
-
-
-
+                {% if not request.user.id %}
                 <div class="fright">
+{#                    国旗跟登陆界面#}
                 	<div class="tagline_items">
                     	<div class="language_select">
                             <div class="selectBox">
@@ -18,71 +15,35 @@
                                 </div>
                             </div>
                         </div>
-                        {% if not request.user.id %}
-                            <div class="language_select">
+{#                        点击后登陆的表#}
+                        <div class="tagline_items">
+                        <div class="signup_select">
                                 <div class="selectBox">
-                                    <span class="selected">注册</span>
+                                    <span class="selected"><strong>登 录</strong></span>
                                     <span class="selectArrow"></span>
                                     <div class="selectOptions" >
-                                        <a href="/studentsignup"><span class="selectOption" ><img src="/static/img/imgs/uk_flag.png" alt="" />学生注册</span></a>
-                                        <a href="/enterprisesignup"><span class="selectOption" ><img src="/static/img/imgs/germany_flag.png" alt="" />企业注册</span></a>
+                                        <a href="/studentlogin"><span class="selectOption"><img src="/static/img/imgs/uk_flag.png" alt="" />学生登录</span></a>
+                                        <a href="/enterpriselogin"><span class="selectOption"><img src="/static/img/imgs/germany_flag.png" alt="" />企业登录</span></a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="log_in_out"><a href="javascript:void(0);" data-toggle="modal" data-target=".login_popup"><i class="icon-sign-in"></i> 登 录</a></div>
-                            <div class="modal fade login_popup" tabindex="-1" role="dialog" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <h3>请登录</h3>
-                                    <form action="{{ path }}" method="post">
-                                        <{% csrf_token %}
-                                              <div class="form-group {%if loginForm.username.errors%} has-error {%endif%}">
-                                                <label for="username" class="col-sm-4 control-label">用户名* :</label>
-                                                <div class="col-sm-5">
-                                                    {{loginForm.username}}
-                                                </div>
-                                              </div>
-                                             <div class="form-group {%if loginForm.password.errors%} has-error {%endif%}">
-                                                  <label for="password" class="col-sm-4 control-label">密码*:</label>
-                                                  <div class="col-sm-5">
-                                                    {{loginForm.password}}
-                                                  </div>
-                                             </div>
-                                              {%if loginForm.username.errors%}
-                                              <div class="col-sm-5 col-sm-offset-4 margint10">
-                                                  <span class="color-background2 ">
-                                                     {% for error in loginForm.username.errors %}
-                                                        {{ error|escape }}
-                                                     {% endfor %}
-                                                  </span>
-                                              </div>
-                                              {%endif%}
+                    </div>
 
-                                              <div class="form-group margint30">
-                                                  <div class="col-sm-offset-2 col-sm-10">
-                                                    <button type="submit" class="btn btn-default">登录</button>
-                                                  </div>
-                                              </div>
-
-                                        <div class="remember_me"><label><input name="remember" type="checkbox" value="remember">Remember Me</label></div>
-                                    </form>
-                                    <div class="forgot_password"><a href="javascript:void(0);">Forgot Your Password?</a></div>
-                                    <button type="button" class="close_popup" data-dismiss="modal"><i class="icon-times"></i></button>
+                    </div>
+{#                    注册#}
+                    <div class="tagline_items">
+                        <div class="signup_select">
+                                <div class="selectBox">
+                                    <span class="selected"><strong>注  册</strong></span>
+                                    <span class="selectArrow"></span>
+                                    <div class="selectOptions" >
+                                        <a href="/studentsignup"><span class="selectOption"><img src="/static/img/imgs/uk_flag.png" alt="" />学生注册</span></a>
+                                        <a href="/enterprisesignup"><span class="selectOption"><img src="/static/img/imgs/germany_flag.png" alt="" />企业注册</span></a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        {% else %}
-                            <div class="language_select">
-                            <div class="selectBox">
-                                <span class="selected">个人中心</span>
-                                <span class="selectArrow"></span>
-
-                            </div>
-                        </div>
-                            <a href="/logout"><div class="log_in_out"><i class="icon-sign-in"></i> 退出登录</div></a>
-
-                        {% endif %}
                     </div>
+{#                    搜索#}
                     <div class="top_search" id="top_search">
                         <form action="#" method="get" name="search_form">
                             <input type="text" class="ct-search-input" value="" name="s" placeholder="Search...">
@@ -93,10 +54,51 @@
                         </form>
                     </div>
                 </div>
+                {% else %}
+                    <div class="fright">
+{#                        国旗跟登陆界面#}
+                            <div class="tagline_items">
+                                <div class="language_select">
+                                    <div class="selectBox">
+                                        <span class="selected"></span>
+                                        <span class="selectArrow"></span>
+                                        <div class="selectOptions" >
+                                            <span class="selectOption" data-value="english"><img src="/static/img/imgs/uk_flag.png" alt="" />English</span>
+                                            <span class="selectOption" data-value="germany"><img src="/static/img/imgs/germany_flag.png" alt="" />Germany</span>
+                                        </div>
+                                    </div>
+                                </div>
 
+                                <div class="log_in_out"><a href=  "/logout"data-toggle="modal" data-target=".login_popup"><i class="icon-sign-in"></i> Logout</a></div>
+        {#                        点击后登陆的表#}
 
+                            </div>
+    {#                    注册#}
+                        <div class="tagline_items">
+                            <div class="signup_select">
+                                    <div class="selectBox">
+                                        <span class="selected"><strong>个人中心</strong></span>
+                                        <span class="selectArrow"></span>
+                                        <div class="selectOptions" >
+                                            <a href="/userland"><span class="selectOption"><img src="/static/img/imgs/uk_flag.png" alt="" />你好:{{user.username}}</span></a>
+                                            <a href="/enterprisesignup"><span class="selectOption"><img src="/static/img/imgs/germany_flag.png" alt="" />企业注册</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+    {#                    搜索#}
+                        <div class="top_search" id="top_search">
+                            <form action="#" method="get" name="search_form">
+                                <input type="text" class="ct-search-input" value="" name="s" placeholder="Search...">
+                                <input type="submit" value="Search" class="s_submit">
+                                <span class="top-icon-search">
+                                    <i class="icon-search"></i>
+                                </span>
+                            </form>
+                        </div>
+                    </div>
 
-
+                {% endif %}
                 <div class="fleft">
                     <div class="phone"><i class="icon-phone"></i> +1 599 269 65 32</div>
                     <div class="email"><a href="mailto:#"><i class="icon-envelope"></i> yan123@co-german.com</a></div>

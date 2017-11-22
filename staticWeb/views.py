@@ -79,6 +79,8 @@ def stu_login(request):
 			auth_login(request, user)
 			if request.user.role == "student":
 				return redirect("home")
+			elif request.user.role == "enterprise":
+				return redirect("logout")
 
 	else:
 		form = LoginForm(auto_id="%s")
@@ -95,11 +97,17 @@ def ent_login(request):
 			auth_login(request, user)
 			if request.user.role == "enterprise":
 				return redirect("home")
+			elif request.user.role == "student":
+				return redirect("logout")
 
 	else:
 		form = LoginForm(auto_id="%s")
 
 	return render(request, 'x_ent_login.html', locals())
+
+def user_land(request):
+	return render(request, 'x_userland.html')
+
 
 def uploadImg(request):
     if request.method == 'POST':

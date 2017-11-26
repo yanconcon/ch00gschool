@@ -1,4 +1,4 @@
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser,User
 from django.db import models
 from imagekit.models import ProcessedImageField as ProcessedImg
 from imagekit.processors import ResizeToFill
@@ -118,4 +118,9 @@ class News(models.Model):
 # 下层对象写上层对象名字
 # 上层对象包含下层对象
 
-
+class ActivateCode(models.Model):
+    owner = models.ForeignKey(User, verbose_name='用户')
+    code = models.CharField('激活码', max_length=100)
+    expire_timestamp = models.DateTimeField()
+    create_timestamp = models.DateTimeField(auto_now_add=True)
+    last_update_timestamp = models.DateTimeField(auto_now=True)

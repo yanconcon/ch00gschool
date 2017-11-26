@@ -106,3 +106,11 @@ class LoginForm(forms.Form):
             raise forms.ValidationError("密码和用户名不匹配")
 
 
+class Completion(forms.ModelForm):
+    stu_calss = forms.CharField()
+    tele_num = forms.IntegerField()
+
+    class Meta:
+        model = get_user_model()
+        fields = ( "stu_calss", "tele_num",)
+

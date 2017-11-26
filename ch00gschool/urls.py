@@ -23,20 +23,20 @@ from staticWeb import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^test/$',views.test, name='home'),
+    url(r'^test/$',views.test,),
     url(r'^news/$',views.news),
     url(r'^foreign_plan/$',views.plan),
     url(r'^improvment/$',views.peixun),
     url(r'^enterprise/$',views.enterprise),
     url(r'^recruitment/$',views.recruitment),
-    url(r'^home/$',views.home),
-    url(r'^studentsignup/',views.stu_signup),
+    url(r'^home/$',views.home,name="home"),
+    url(r'^studentsignup/',views.test_signup),
     url(r'^enterprisesignup/',views.ent_signup),
-    url(r'^studentlogin/',views.stu_login),
+    url(r'^studentlogin/',views.stu_login,name="studentlogin"),
     url(r'^enterpriselogin/', views.ent_login),
     url(r'^upload', views.uploadImg),
     url(r'^show', views.showImg),
     url(r'^logout/', views.logout1, name= 'logout'),
-    url(r'^userland/', views.user_land,name='userland'),
+    url(r'^userland/', views.complete),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

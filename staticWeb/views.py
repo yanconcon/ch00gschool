@@ -1,12 +1,16 @@
 from django.shortcuts import render,redirect
-from staticWeb.forms import SignupForm,LoginForm
+from staticWeb.forms import SignupForm,LoginForm,Completion
 from django.contrib.auth import get_user_model
 from django.contrib.auth import authenticate,login as auth_login ,logout
-
+from django.http import HttpResponse
 from staticWeb.models import News, Enterprise,Candidates
-
+from django.core.mail import  send_mail
 # Create your views here.
 from staticWeb.models import Student
+import uuid
+from django.utils import timezone
+import datetime
+
 
 
 def test(request):
@@ -41,6 +45,7 @@ def stu_signup(request):
 			email = form.cleaned_data['email']
 			password = form.cleaned_data['password']
 			role = 'student'
+			studentnews = News()
 			user=Student.objects.create_user(username=username,email=email,password=password,role='student')
 			user.save()
 			auth_user = authenticate(username=username,password=password)
@@ -105,8 +110,6 @@ def ent_login(request):
 
 	return render(request, 'x_ent_login.html', locals())
 
-def user_land(request):
-	return render(request, 'x_userland.html')
 
 
 def uploadImg(request):
@@ -127,8 +130,53 @@ def showImg(request):
     return render(request, 'show.html', locals())
 
 def logout1(request):
-	logout(request)
-	return redirect('home')
 
+    logout(request)
+    
+    return redirect('home')
 
+def hello(request):
+    context          = {}
+    context['hello'] = 'Hello World!'
+    return render(request, 'x_userland.html', context)
 
+def complete(request):
+	if request.method=='POST':
+		form=Completion(request.POST)
+		if form.is_valid():
+			stu_calss = form.cleaned_data['stu_calss']
+			tele_num = form.cleaned_data['tele_num']
+			user = request.user
+			u1 = Student.objects.get_by_natural_key(username= user.username)
+			u1.stu_class = stu_calss
+			u1.tele_num = tele_num
+			u1.save()
+
+			return redirect("home")
+	else:
+		form=Completion(auto_id="%s")
+	return render(request,'x_userland.html',{'form':form})
+
+def test_signup(request):
+	path=request.get_full_path()
+	if request.method=='POST':
+		form=SignupForm(data=request.POST,auto_id="%s")
+		if form.is_valid():
+			username = form.cleaned_data['username']
+			email = form.cleaned_data['email']
+			password = form.cleaned_data['password']
+			role = 'student'
+			studentnews = News()
+			user=Student.objects.create_user(username=username,email=email,password=password,role='student')
+			user.save()
+
+			new_code = str(uuid.uuid4()).replace('-','')
+			expire_time = timezone.now()+datetime.timedelta(day=2)
+			code_record = uuid.(owner=user,code=new_code,expire_time=expire_time)
+			code_record.save()
+			auth_user = authenticate(username=username,password=password)
+			auth_login(request,auth_user)
+			return redirect("home")
+	else:
+		form=SignupForm(auto_id="%s")
+	return render(request,'x_signup.html',locals())

@@ -7,6 +7,9 @@
 <link rel="apple-touch-icon" href="/static/img/apple_icons_57x57.png">
 <link rel="apple-touch-icon" sizes="72x72" href="/static/img/apple_icons_72x72.png">
 <link rel="apple-touch-icon" sizes="114x114" href="/static/img/apple_icons_114x114.png">
+{% block dependences %}
+
+{% endblock %}
 <title>{% block title %}
 主页基模板
 {% endblock %}</title>
@@ -18,9 +21,13 @@
 <link rel="stylesheet" href="/static/css/custom.css" type="text/css" media="all" />
 </head>
 <body>
+
     {% include 'y_main_header.html' %}
+    {% block content %}
 
     {% include 'y_wrapper.html' %}
+
+    {% endblock %}
 
     {% include 'y_footer.html' %}
 

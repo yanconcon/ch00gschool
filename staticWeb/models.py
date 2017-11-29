@@ -119,7 +119,7 @@ class News(models.Model):
 # 上层对象包含下层对象
 
 class ActivateCode(models.Model):
-    owner = models.ForeignKey(User, verbose_name='用户')
+    owner = models.ForeignKey(MyUser, verbose_name='用户')
     code = models.CharField('激活码', max_length=100)
     expire_timestamp = models.DateTimeField()
     create_timestamp = models.DateTimeField(auto_now_add=True)

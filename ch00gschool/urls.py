@@ -16,7 +16,6 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.conf.urls.static import static
-from django.conf import settings
 
 from ch00gschool import settings
 from staticWeb import views
@@ -38,5 +37,14 @@ urlpatterns = [
     url(r'^show', views.showImg),
     url(r'^logout/', views.logout1, name= 'logout'),
     url(r'^userland/', views.complete),
+    url(r'^activate/(?P<code>\w+)$', views.activate),  # 注册时带有激活码的激活连接页面
+    url(r'^change_password/(?P<code>\w+)$',views.password_change),  # 更改密码
 
+    # url(r'^password_change/$', views.password_change, name='password_change'),
+    # url(r'^password_change/done/$', views.password_change_done, name='password_change_done'),
+    url(r'^password_reset/$', views.password_reset, name='password_reset'),
+    # url(r'^password_reset/done/$', views.password_reset_done, name='password_reset_done'),
+    # url(r'^reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
+    #     'django.contrib.auth.views.password_reset_confirm',name='password_reset_confirm'),
+    # url(r'^reset/done/$', views.password_reset_complete, name='password_reset_complete'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

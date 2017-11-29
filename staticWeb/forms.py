@@ -78,6 +78,39 @@ class SignupForm(forms.ModelForm):
             return username
         raise forms.ValidationError("有人已经注册了这个用户名")
 
+class Reset_emailForm(forms.Form):
+    email = forms.EmailField(error_messages={'required': '请填写你的email', 'invalid': 'email格式不正确'},
+                             label='邮箱', required=True,
+                             widget=forms.EmailInput(attrs={'placeholder': '请输入你的注册邮箱'}))
+
+    def clean_email(self):
+        UserModel = get_user_model()
+        email = self.cleaned_data["email"]
+        lower_email = lowercase_email(email)
+        try:
+            UserModel._default_manager.get(email=lower_email)
+        except UserModel.DoesNotExist:
+            raise forms.ValidationError("还没有人注册这个邮箱")
+        return lower_email
+
+class Change_passwordForm(forms.Form):
+    password = forms.CharField(
+        error_messages={'required': '请输入密码', 'max_length': '最多只能输入20个字符', 'min_length': '至少输入6个字符'},
+        label='密码', required=True, max_length=20, widget=forms.PasswordInput(attrs={'placeholder': '长度在6~20个字符以内'}))
+    confirm_password = forms.CharField(
+        error_messages={'required': '请输入密码', 'max_length': '最多只能输入20个字符', 'min_length': '至少输入6个字符'},
+        label='确认密码', required=True, max_length=20, min_length=6,
+        widget=forms.PasswordInput(attrs={'placeholder': '长度在6~20个字符以内'}))
+    def clean_confirm_password(self):
+        # cleaned_data=super(SignupForm,self).clean()
+        password = self.cleaned_data.get("password", False)
+        confirm_password = self.cleaned_data["confirm_password"]
+        if not (password == confirm_password):
+            raise forms.ValidationError("确认密码和密码不一致")
+        return confirm_password
+
+
+
 
 class LoginForm(forms.Form):
     username = forms.CharField(
@@ -113,4 +146,6 @@ class Completion(forms.ModelForm):
     class Meta:
         model = get_user_model()
         fields = ( "stu_calss", "tele_num",)
+
+
 

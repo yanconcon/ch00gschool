@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'imagekit',
     'staticWeb',
+    'account',
 ]
 
 MIDDLEWARE = [
@@ -130,3 +131,12 @@ AUTH_USER_MODEL = 'staticWeb.MyUser'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media').replace('\\', '/')     #设置静态文件路径为主目录下的media文件夹
 MEDIA_URL = '/media/'
+
+EMAIL_USER_SSL = True
+EMAIL_USE_SSL = True
+EMAIL_HOST = 'smtp.163.com'  # 如果是 163 改成 smtp.163.com
+EMAIL_PORT = 465
+EMAIL_HOST_USER = 'm15992696532_1@163.com' # 帐号
+EMAIL_HOST_PASSWORD = 'yan8655510'  # 密码
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
